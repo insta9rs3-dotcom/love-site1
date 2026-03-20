@@ -2,153 +2,184 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Nada ❤️</title>
 
 <style>
-body {
-  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-  color: white;
-  text-align: center;
-  font-family: Arial;
-  overflow: hidden;
-}
+  :root {
+    --primary-color: #ff4d6d;
+    --bg-dark: #0f0f1a;
+  }
 
-/* فوق */
-.top-right {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 14px;
-  opacity: 0.7;
-}
+  body {
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-.top-left {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-size: 14px;
-  opacity: 0.7;
-}
+  /* التاريخ والتحية */
+  .top-info {
+    position: absolute;
+    top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+  }
 
-/* الكارد */
-.card {
-  margin-top: 120px;
-  background: rgba(255,255,255,0.07);
-  padding: 30px;
-  border-radius: 20px;
-  display: inline-block;
-  backdrop-filter: blur(10px);
-}
+  /* تأثير القرص الموسيقي */
+  .music-container {
+    margin-bottom: 20px;
+    position: relative;
+  }
 
-h2 {
-  font-size: 28px;
-}
+  .disc {
+    width: 120px;
+    height: 120px;
+    background: url('https://cdn-icons-png.flaticon.com/512/1041/1041042.png') no-repeat center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.5s ease;
+    animation: spin 3s linear infinite;
+    animation-play-state: paused; /* يشتغل بس من تشتغل الموسيقى */
+  }
 
-#text {
-  font-size: 22px;
-  margin-top: 15px;
-}
+  .disc.playing {
+    animation-play-state: running;
+  }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 12px;
-  background: #ff4d6d;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
-/* قلوب */
-.heart {
-  position: absolute;
-  animation: float 6s linear infinite;
-}
+  /* الكارد */
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 85%;
+    max-width: 400px;
+    z-index: 10;
+  }
 
-@keyframes float {
-  0% { transform: translateY(100vh); opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
-}
+  h2 { font-size: 32px; margin-bottom: 10px; color: var(--primary-color); }
+  
+  #text {
+    font-size: 20px;
+    min-height: 60px;
+    margin: 20px 0;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+  }
 
-/* S&N */
-.center-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 60px;
-  opacity: 0.05;
-}
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  button:hover { transform: scale(1.05); background: #ff758c; }
+  
+  .btn-music { background: #4a4e69; }
+
+  /* الخلفية المتحركة */
+  .heart {
+    position: absolute;
+    color: var(--primary-color);
+    animation: float 5s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .center-text {
+    position: absolute;
+    font-size: 10vw;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 0;
+    pointer-events: none;
+  }
 </style>
 </head>
 
 <body>
 
-<div class="top-right">2025/10/8 ❤️</div>
-<div class="top-left">أبو السين يرسل تحياته 😏</div>
+<div class="top-info">
+  <div>أبو السين يرسل تحياته 😏</div>
+  <div>2025/10/8 ❤️</div>
+</div>
 
-<div class="center-text">S&N ❤️</div>
+<div class="center-text">S & N</div>
+
+<div class="music-container">
+  <div class="disc" id="vinyl"></div>
+</div>
 
 <div class="card">
-<h2>ندى ❤️</h2>
-<p id="text">لا تضغطين بسرعة 😏</p>
-<button onclick="next()">Next</button>
-<br>
-<button onclick="playMusic()">🎵 شغلي الأغنية</button>
+  <h2>ندى ❤️</h2>
+  <p id="text">لا تضغطين بسرعة 😏</p>
+  
+  <div class="btn-group">
+    <button onclick="next()">Next ✨</button>
+    <button class="btn-music" id="musicBtn" onclick="toggleMusic()">🎵 شغلي الأغنية</button>
+  </div>
 </div>
 
 <audio id="music" loop>
-  <source src="PUT-MP3-HERE" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 let messages = [
-"أوكي خل نبدي 😏",
-"وجودج يخلي يومي حلو... مرات 😂",
-"بس حتى بهالمرات... أحبها لأن بيها أنتي ❤️",
-"صرتي جزء من يومي... بدونج أحس شي ناقص",
-"مو دايماً أگولها... بس وجودج يفرق هواي وياي",
-"شوي تخليني أنغث منج 🤨",
-"بس بنفس الوقت... فدوة إلج 😏❤️",
-"وأحس لو غبتي... كلشي يصير ممل",
-"أحب سوالفج... حتى الغثيثة 😂",
-"وأحب وجودج بكل تفاصيل يومي",
-"بالمختصر...",
-"أحبج مو طبيعي",
-"أحبج موت ❤️",
-"وإذا وصلتي لهنا...",
-"هذا يعني أنتي هم مهتمة 😏",
-"و بعد شنو تريدين مني؟ 😔❤️",
-"وكل عام وانتي بخير يا أحلى ندى ❤️🎉"
+  "أوكي خل نبدي 😏",
+  "وجودج يخلي يومي حلو... مرات 😂",
+  "بس حتى بهالمرات... أحبها لأن بيها أنتي ❤️",
+  "صرتي جزء من يومي... بدونج أحس شي ناقص",
+  "مو دايماً أگولها... بس وجودج يفرق هواي وياي",
+  "شوي تخليني أنغث منج 🤨",
+  "بس بنفس الوقت... فدوة إلج 😏❤️",
+  "وأحس لو غبتي... كلشي يصير ممل",
+  "أحب سوالفج... حتى الغثيثة 😂",
+  "وأحب وجودج بكل تفاصيل يومي",
+  "بالمختصر...",
+  "أحبج مو طبيعي",
+  "أحبج موت ❤️",
+  "وإذا وصلتي لهنا...",
+  "هذا يعني أنتي هم مهتمة 😏",
+  "و بعد شنو تريدين مني؟ 😔❤️",
+  "وكل عام وانتي بخير يا أحلى ندى ❤️🎉"
 ];
 
 let i = 0;
-
-function next(){
-  if(i < messages.length){
-    document.getElementById("text").innerText = messages[i];
-    i++;
-  }
-}
-
-// تشغيل الصوت
-function playMusic(){
-  document.getElementById("music").play();
-}
-
-// قلوب
-setInterval(() => {
-  let heart = document.createElement("div");
-  heart.innerHTML = "❤️";
-  heart.className = "heart";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (20 + Math.random() * 25) + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 6000);
-}, 300);
-</script>
-
-</body>
-</html>
